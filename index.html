@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tech-articals</title>
+    <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+          .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #051f94e5 0%, #6e04d8 100%);
+            min-height: 100vh;
+            padding: 5vh 10vw
+            
+        }
+        @media (max-width: 768px) {
+            body{
+                padding: 5vh 2vw;
+            }
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-filter {
+                flex-direction: column;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .container{
+            text-align: center;
+              margin-bottom: 40px;
+            color: white;
+        }
+        .heading{
+          text-shadow:  2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .search-filter{
+
+             background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .search-box{
+            flex: 1;
+            min-width: 250px;
+        }
+         .search-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.9);
+            transition: all 0.3s ease;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .filter-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+         .filter-btn.active {
+            background: #ff6b6b;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+         
+        .artical-grid {
+        display: grid;
+           grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+    ;
+        }
+      .box{
+           background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+      position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+            
+      }
+ .footer {
+    display: flex;
+    justify-content: space-between; /* read time left, like right */
+    align-items: center;
+    margin-top: 15px;
+    font-weight: bold; color: #999;
+}
+
+.like-btn {
+    display: inline-block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
+   
+}
+.like-btn:hover {
+    transform: scale(1.2);
+    color: #ff6b6b;
+}
+      
+.box:hover{
+          transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: solid rgba(0, 0, 0, 0.541) 1px;
+      }
+      
+          .s1{ display: inline-block;
+            align-items: center;
+            margin-bottom: 15px; }
+
+    
+    .javascript{
+       background-color: #ff896b;
+        width: fit-content;
+        padding: 6px;
+        border-radius: 15px;
+        
+        
+    }
+    .Css{
+        background-color: #f0ff6b;
+        width: fit-content;
+        padding: 6px;
+        border-radius: 15px;
+    
+    }
+    .React{
+        background-color: #54a6f3;
+        width: fit-content;
+        padding: 6px;
+        border-radius: 15px;
+       
+    }
+    .node{
+        background-color: #95ff6b;
+        width: fit-content;
+        padding: 6px;
+        border-radius: 15px;
+       
+    }
+    .meta{
+        display: flex;
+        justify-content: space-between;
+    }
+    .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+      .page-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .page-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+    
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Tech articals</h1>
+        <p >Stay updated with the latest in technology</p>
+        </div>
+         <div class="search-filter">
+            <div class="search-box">
+                <input type="text" placeholder="Search articles..." >
+            </div>
+            <div class="filter-buttons">
+                <a href="#" class="filter-btn active">All</a>
+                <a href="#" class="filter-btn">JavaScript</a>
+                <a href="#" class="filter-btn">React</a>
+                <a href="#" class="filter-btn">CSS</a>
+                <a href="#" class="filter-btn">Node.js</a>
+            </div>
+            </div>
+    </div>
+    <div class="artical-grid">
+        <div class="box js">
+            <div class="meta">
+            <span class="s1 javascript ">javascript</span>
+            <span class="date">jan 14 2024</span></div>
+            <h2 class="article titlle">Modern JavaScript ES6+ Features You Should Know</h2>
+            <p class="description">Explore the latest JavaScript
+                 features that will make your code more efficient and readable.
+                 From arrow functions to destructuring, learn the essentials.</p>
+                 <div class="footer">
+            <span class="readtime">10min</span>   
+            <span class="like-btn">🤍 42</span>
+        </div>
+        </div>
+        <div class="box css">
+            <div class="meta">
+            <span class="s1 Css">css</span>
+            <span class="date">fab 15 2024</span></div>
+            <h2 class="article titlle">Building Responsive Layouts with CSS Grid</h2>
+            <p class="description">Learn how to create complex, responsive layouts using CSS Grid. Master the fundamentals 
+                and advanced techniques for modern web design..</p>
+            <div class="footer">
+            <span class="readtime">20min</span>   
+            <span class="like-btn">🤍 56</span>
+        </div>
+        </div>
+        <div class="box react">
+            <div class="meta">
+            <span class="s1 React">React</span>
+            <span class="date">jan 04 2025</span></div>
+            <h2 class="article titlle">React Hooks: A Complete Guide</h2>
+            <p class="description">Explore the latest JavaScript
+                 features that will make your code more efficient and readable.
+                 From arrow functions to destructuring, learn the essentials.</p>
+           <div class="footer">
+            <span class="readtime">15min</span>   
+            <span class="like-btn">🤍 32</span>
+        </div>
+        </div>
+        <div class=" box node.js">
+            <div class="meta">
+            <span class="s1 node">Node.js</span>
+            <span class="date">march 14 2024</span></div>
+            <h2 class="article titlle">Building RESTful APIs with Node.js and Express</h2>
+            <p class="description">Step-by-step guide to creating robust RESTful APIs using
+                 Node.js and Express framework with best practices and security considerations..</p>
+          <div class="footer">
+            <span class="readtime">6min</span>   
+            <span class="like-btn">🤍 24</span>
+        </div>
+        </div>
+        <div class=" box react">
+            <div class="meta">
+            <span class="s1 React">React</span>
+            <span class="date">nov 5 2024</span></div>
+            <h2 class="article titlle">React Context API for State Management</h2>
+            <p class="description">Learn how to manage application state effectively using React 
+                Context API. A great alternative to Redux for smaller applications.</p>
+          <div class="footer">
+            <span class="readtime">19min</span>   
+            <span class="like-btn">🤍 12</span>
+        </div>
+        </div>
+        <div class=" box react">
+            <div class="meta">
+            <span class="s1 node">Node.js</span>
+            <span class="date">aug 14 2024</span></div>
+            <h2 class="article titlle">Node.js Performance Optimization Tips</h2>
+            <p class="description">Boost your Node.js application performance with these proven optimization
+                 techniques, profiling tools, and best practices</p>
+          <div class="footer">
+            <span class="readtime">19min</span>   
+            <span class="like-btn">🤍 21</span>
+        </div>
+        </div>
+        <div class=" box js">
+            <div class="meta">
+            <span class="s1 javascript">javascript</span>
+            <span class="date">sep 24 2024</span></div>
+            <h2 class="article titlle">JavaScript Async/Await vs Promises</h2>
+            <p class="description">Understanding the differences between Promises and Async/Await in
+                 JavaScript. Learn when to use each approach for better code.</p>
+          <div class="footer">
+            <span class="readtime">10min</span>   
+            <span class="like-btn">🤍 22</span>
+        </div>
+        </div>
+        <div class=" box css">
+            <div class="meta">
+            <span class="s1 Css">css</span>
+            <span class="date">aug 06 2024</span></div>
+            <h2 class="article titlle">CSS Animation Techniques for Modern Web</h2>
+            <p class="description">Create stunning animations using CSS transitions, transforms,
+                 and keyframes. Enhance user experience with smooth, performant animations.</p>
+          <div class="footer">
+            <span class="readtime">7min</span>   
+            <span class="like-btn">🤍 10</span>
+        </div>
+        </div>
+                <div class="pagination">
+            <a href="#" class="page-btn">Previous</a>
+            <a href="#" class="page-btn active">1</a>
+            <a href="#" class="page-btn">2</a>
+            <a href="#" class="page-btn">3</a>
+            <a href="#" class="page-btn">Next</a>
+        </div>
+
+     
+    </div>
+</body>
+</html>
